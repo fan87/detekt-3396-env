@@ -1,22 +1,16 @@
+
 package me.fan87.lints
 
-import io.gitlab.arturbosch.detekt.api.Config
-import io.gitlab.arturbosch.detekt.api.RuleSet
-import io.gitlab.arturbosch.detekt.api.RuleSetProvider
-import me.fan87.lints.rules.ExampleRule
 
-class LintProvider : RuleSetProvider {
+class LintProvider : io.gitlab.arturbosch.detekt.api.RuleSetProvider {
     override val ruleSetId: String = "TestingRule"
 
-    override fun instance(config: Config): RuleSet {
-        println("Hello, World!!")
-//        error("HUH v2")
-        error("ASDF")
+    override fun instance(config: io.gitlab.arturbosch.detekt.api.Config): io.gitlab.arturbosch.detekt.api.RuleSet {
+        // println("Hello, World!!")
 
-        return RuleSet(ruleSetId, listOf(
-            ExampleRule(config)
+        return io.gitlab.arturbosch.detekt.api.RuleSet(ruleSetId, listOf(
+            me.fan87.lints.rules.ExampleRule(config)
         ))
     }
-
-
 }
+

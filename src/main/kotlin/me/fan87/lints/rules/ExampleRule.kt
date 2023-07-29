@@ -12,13 +12,6 @@ class ExampleRule(config: Config = Config.empty) : Rule(config) {
     )
 
     override fun visitCondition(root: KtFile): Boolean {
-//        error("HUH??")
-//        error("HUH??")
-
-
-
-
-
         return false
     }
 
