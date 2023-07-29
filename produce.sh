@@ -52,10 +52,10 @@ class LintProvider : io.gitlab.arturbosch.detekt.api.RuleSetProvider {
 }
 " > src/main/kotlin/me/fan87/lints/LintProvider.kt
 
-set OUTPUT=$(./gradlew detekt --console=plain --rerun-tasks)
-if echo $OUTPUT | grep -q "me.fan87.lints.LintProvider@"
+./gradlew detekt --console=plain --rerun-tasks | tee /tmp/gradle-log.log
+if cat /tmp/gradle-log.log | grep -q "me.fan87.lints.LintProvider@"
 then
-  if echo $OUTPUT | grep -q "Hello, World!!"
+  if cat /tmp/gradle-log.log | grep -q "Hello, World!!"
   then
     >&2 echo "[!] Test failed, the Jar in the classpath is not updated";
   else
